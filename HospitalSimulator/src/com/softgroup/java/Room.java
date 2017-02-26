@@ -1,6 +1,8 @@
 package com.softgroup.java;
 
-public class Room{
+import java.util.Observable;
+
+public class Room extends Observable{
 	
 	public int doctorCount;
 	public int visitorCount;
@@ -22,7 +24,8 @@ public class Room{
 	}
 	
 	public synchronized void notifyDisplay() {
-		System.out.println("Doctors: "+doctorCount+" | Visitors: "+visitorCount);
+		setChanged();
+		notifyObservers();
 	}
 
 }

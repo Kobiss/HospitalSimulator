@@ -1,19 +1,21 @@
 package com.softgroup.java;
 
-//public class Display extends Thread{
-//
-//	@Override
-//	public void run() {
-//		
-//		while(true){
-//			synchronized (this) {
-//				try {
-//					this.wait();
-//				} catch (InterruptedException e) { e.printStackTrace(); }
-//			}
-//			
-//			System.out.println("Start");
-//		}
-//		
-//	}
-//}
+import java.util.Observable;
+import java.util.Observer;
+
+public class Display implements Observer{
+	
+	private Room room;
+
+	public Display(Room room) {
+		this.room = room;
+		room.addObserver(this);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		synchronized (room) {
+			System.out.println("Doctors: " + room.doctorCount + " | Visitors: " + room.visitorCount);
+		}	
+	}
+}
