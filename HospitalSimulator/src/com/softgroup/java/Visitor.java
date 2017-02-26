@@ -15,7 +15,7 @@ public class Visitor extends Human{
 			while(room.getDoctorCount()>0||room.getVisitorCount()>=4){
 				room.wait();
 			}
-			room.visitorCount++;
+			room.incVisitorCount(1);
 			room.notifyDisplay();
 		}		
 	}
@@ -23,7 +23,7 @@ public class Visitor extends Human{
 	@Override
 	public void exit() {		
 		synchronized (room) {
-			room.visitorCount--;
+			room.incVisitorCount(-1);
 			room.notify();
 			room.notifyDisplay();
 		}		

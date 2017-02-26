@@ -2,7 +2,7 @@ package com.softgroup.java;
 
 abstract class Human extends Thread{	
 	
-	int timeInside;
+	private int timeInside;
 	
 	public Human(int timeInside) {
 		this.timeInside = timeInside;

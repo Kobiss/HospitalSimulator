@@ -15,7 +15,7 @@ public class Display implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		synchronized (room) {
-			System.out.println("Doctors: " + room.doctorCount + " | Visitors: " + room.visitorCount);
+			System.out.println("Doctors: " + room.getDoctorCount() + " | Visitors: " + room.getVisitorCount());
 		}	
 	}
 }

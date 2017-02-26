@@ -4,9 +4,14 @@ import java.util.Observable;
 
 public class Room extends Observable{
 	
-	public int doctorCount;
-	public int visitorCount;
-	
+	private int doctorCount;
+	private int visitorCount;
+		
+	public synchronized void notifyDisplay() {
+		setChanged();
+		notifyObservers();
+	}
+
 	public int getDoctorCount() {
 		return doctorCount;
 	}
@@ -14,10 +19,13 @@ public class Room extends Observable{
 	public int getVisitorCount() {
 		return visitorCount;
 	}
+
+	public void incDoctorCount(int newCount) {
+		this.doctorCount += newCount;
+	}
 	
-	public synchronized void notifyDisplay() {
-		setChanged();
-		notifyObservers();
+	public void incVisitorCount(int newCount) {
+		this.visitorCount += newCount;
 	}
 
 }
