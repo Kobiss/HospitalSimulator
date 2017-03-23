@@ -6,6 +6,7 @@ import java.util.Observer;
 public class Display implements Observer{
 	
 	private Room room;
+	private int testVar = 0;
 
 	public Display(Room room) {
 		this.room = room;
